@@ -2,6 +2,10 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 
 const isProd = process.env.NODE_ENV === 'production'
 
+const workboxConfig = {
+  "maximumFileSizeToCacheInBytes": 5000000
+}
+
 module.exports = {
   outputDir: 'music',
   configureWebpack: {
@@ -25,7 +29,7 @@ module.exports = {
       axios: 'axios',
     }: {},
     plugins: [
-      new WorkboxPlugin.GenerateSW()
+      new WorkboxPlugin.GenerateSW(workboxConfig)
     ]
   },
   css: {
